@@ -5,11 +5,11 @@ const taskSchema = mongoose.Schema({
     type: String,
     require: true,
   },
-  comleted: {
+  completed: {
     type: Boolean,
     default: false,
   },
-  createdBy: {
+  createBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
