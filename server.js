@@ -24,5 +24,3 @@ app.listen(port, () => {
     `Server listening on port ${port} and starting at http://localhost:${port}`
   );
 });
-
-module.exports = app;
