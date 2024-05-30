@@ -15,10 +15,10 @@ const port = 3000;
 //middleware
 app.use(bodyParser.json());
 
-app.use(
-  "/api/docs",
-  express.static(path.join(__dirname, "node_modules", "swagger-ui-dist"))
-);
+// app.use(
+//   "/api/docs",
+//   express.static(path.join(__dirname, "node_modules", "swagger-ui-dist"))
+// );
 
 app.use("/api/docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
