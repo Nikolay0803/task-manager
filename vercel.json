@@ -4,17 +4,14 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
-    },
-        {
-          "src": "swagger.yaml",
-          "use": "@vercel/static"
-        }
+    }
   ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/server.js"
     },
-    { "src": "/swagger", "dest": "/swagger.yaml" }
+    { "src": "/api/docs", "dest": "/server.js" },
+    { "src": "/api/docs/(.*)", "dest": "/server.js" }
   ]
 }

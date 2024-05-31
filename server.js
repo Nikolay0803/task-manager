@@ -7,7 +7,7 @@ import "./config/db.js";
 import authRouter from "./routes/authRoutes.js";
 import taskRouter from "./routes/taskRoutes.js";
 import swaggerSpec from "./config/swagger.js";
-import path from "path";
+// import path from "path";
 
 const app = express();
 const port = 3000;
