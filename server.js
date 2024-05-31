@@ -7,7 +7,8 @@ import "./config/db.js";
 import authRouter from "./routes/authRoutes.js";
 import taskRouter from "./routes/taskRoutes.js";
 import swaggerSpec from "./config/swagger.js";
-// import path from "path";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 const port = 3000;
@@ -15,10 +16,14 @@ const port = 3000;
 //middleware
 app.use(bodyParser.json());
 
-// app.use(
-//   "/api/docs",
-//   express.static(path.join(__dirname, "node_modules", "swagger-ui-dist"))
-// );
+// get __dirname equivalent
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(
+  "/api/docs",
+  express.static(path.join(__dirname, "node_modules", "swagger-ui-dist"))
+);
 
 app.use("/api/docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
