@@ -7,8 +7,8 @@ import "./config/db.js";
 import authRouter from "./routes/authRoutes.js";
 import taskRouter from "./routes/taskRoutes.js";
 import swaggerSpec from "./config/swagger.js";
-import path from "path";
-import { fileURLToPath } from "url";
+// import path from "path";
+// import { fileURLToPath } from "url";
 
 const app = express();
 const port = 3000;
@@ -16,14 +16,14 @@ const port = 3000;
 //middleware
 app.use(bodyParser.json());
 
-// get __dirname equivalent
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// // get __dirname equivalent
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
-app.use(
-  "/api/docs",
-  express.static(path.join(__dirname, "node_modules", "swagger-ui-dist"))
-);
+// app.use(
+//   "/api/docs",
+//   express.static(path.join(__dirname, "node_modules", "swagger-ui-dist"))
+// );
 
 app.use("/api/docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
@@ -34,18 +34,4 @@ app.listen(port, () => {
   console.log(
     `Server listening on port ${port} and starting at http://localhost:${port}`
   );
-});
-
-// Add logging
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path}`);
-  next();
-});
-
-process.on("unhandledRejection", (reason, promise) => {
-  console.error("Unhandled Rejection:", reason);
-});
-
-process.on("uncaughtException", (error) => {
-  console.error("Uncaught Exception:", error);
 });
