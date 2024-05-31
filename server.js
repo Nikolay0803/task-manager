@@ -35,3 +35,17 @@ app.listen(port, () => {
     `Server listening on port ${port} and starting at http://localhost:${port}`
   );
 });
+
+// Add logging
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection:", reason);
+});
+
+process.on("uncaughtException", (error) => {
+  console.error("Uncaught Exception:", error);
+});
