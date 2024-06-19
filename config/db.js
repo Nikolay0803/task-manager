@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import { DB_NAME, DB_PASSWORD } from "./secret.js"
+import { DB_NAME, DB_PASSWORD } from "../.env"
 const URI = `mongodb+srv://${DB_NAME}:${DB_PASSWORD}@cluster0.p57nons.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose
